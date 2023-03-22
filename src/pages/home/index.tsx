@@ -1,6 +1,8 @@
 import { Post, PostType } from '@/components/post'
 import { useEffect, useState } from 'react'
 
+import * as S from './styles'
+
 export function Home () {
   const [posts, setPosts] = useState<PostType[]>([])
 
@@ -11,9 +13,9 @@ export function Home () {
   }, [])
 
   return (
-    <div>
+    <S.Container>
       <h1>Posts</h1>
-      <div>
+      <S.ListContainer>
         {posts.map(post => (
           <Post
             key={post.id}
@@ -22,7 +24,7 @@ export function Home () {
             body={post.body}
           />
         ))}
-      </div>
-    </div>
+      </S.ListContainer>
+    </S.Container>
   )
 }
