@@ -21,6 +21,8 @@ export const Footer = styled.footer`
   }
 
   > .comments {
+    display: flex;
+    align-items: center;
     margin-left: auto;
 
     > svg:hover path {

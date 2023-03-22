@@ -1,6 +1,6 @@
-import * as S from './styles'
 import { ReactComponent as Message } from '@/assets/icons/messages.svg'
 import { ReactComponent as Avatar } from '@/assets/icons/avatar.svg'
+import * as S from './styles'
 
 export type PostType = {
   id: number
