@@ -10,7 +10,7 @@ export type PostType = {
   body: string
 }
 
-export type PostProps = Omit<PostType, 'userId'> & {
+export type PostProps = PostType & {
   isComment?: boolean
   isHighlighted?: boolean
   email?: string
@@ -21,6 +21,7 @@ export function Post ({
   body,
   email,
   title,
+  userId,
   isComment,
   isHighlighted,
 }: PostProps) {
@@ -30,11 +31,11 @@ export function Post ({
       <p>{body}</p>
 
       <S.Footer>
-        <button className='user-info'>
+        <Link to={`user/${userId}`} className='user-info'>
           <Avatar aria-label="profile" title="profile" />
           {!!email && <span>{email}</span>}
           {!email && <span>Ver perfil</span>}
-        </button>
+        </Link>
 
         {!isComment && (
           <Link to={`post/${id}`} className='comments'>

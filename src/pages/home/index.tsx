@@ -48,6 +48,7 @@ export function Home () {
           <Post
             key={post.id}
             id={post.id}
+            userId={post.userId}
             title={post.title}
             body={post.body}
           />

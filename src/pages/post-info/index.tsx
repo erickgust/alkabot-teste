@@ -66,6 +66,7 @@ export function PostInfo () {
       {post && (
         <Post
           id={post.id}
+          userId={post.userId}
           title={post.title}
           body={post.body}
           isComment
@@ -88,6 +89,7 @@ export function PostInfo () {
             <Post
               key={comment.id}
               id={comment.id}
+              userId={comment.id}
               title={comment.name}
               body={comment.body}
               email={comment.email}

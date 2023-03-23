@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import { Home } from './pages/home'
 import { PostInfo } from './pages/post-info'
+import { UserInfo } from './pages/user-info'
 
 export const Main = styled.main`
   width: 100%;
@@ -17,6 +18,7 @@ function App () {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/post/:id' component={PostInfo} />
+        <Route path='/user/:id' component={UserInfo} />
       </Switch>
     </Main>
   )
