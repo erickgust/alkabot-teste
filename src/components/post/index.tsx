@@ -11,12 +11,20 @@ export type PostType = {
 
 export type PostProps = Omit<PostType, 'userId'> & {
   isComment?: boolean
+  isHighlighted?: boolean
   email?: string
 }
 
-export function Post ({ id, title, body, isComment, email }: PostProps) {
+export function Post ({
+  id,
+  body,
+  email,
+  title,
+  isComment,
+  isHighlighted,
+}: PostProps) {
   return (
-    <S.Container key={id}>
+    <S.Container key={id} isHighlighted={isHighlighted}>
       <h2>{title}</h2>
       <p>{body}</p>
 

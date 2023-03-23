@@ -56,6 +56,7 @@ export function PostInfo () {
           title={post.title}
           body={post.body}
           isComment
+          isHighlighted
         />
       )}
 

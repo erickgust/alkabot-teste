@@ -1,10 +1,19 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Container = styled.article`
+type ContainerProps = {
+  isHighlighted?: boolean
+}
+
+export const Container = styled.article<ContainerProps>`
   background-color: ${({ theme }) => theme.colors.posts.background};
   padding: 2.4rem;
   border-radius: 0.8rem;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+  border: 2px solid transparent;
+
+  ${({ isHighlighted, theme }) => isHighlighted && css`
+    border: 2px solid ${theme.colors.primary};
+  `}
 
   > h2 {
     margin: 0;
