@@ -3,6 +3,7 @@ import { theme } from './resources/theme'
 import { App } from './app'
 
 import 'normalize.css'
+import { BrowserRouter } from 'react-router-dom'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -27,9 +28,11 @@ const GlobalStyle = createGlobalStyle`
 
 export function Root () {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }
