@@ -1,4 +1,5 @@
 import { ListCount } from '@/components/list-count'
+import { Loader } from '@/components/loader'
 import { Post, PostType } from '@/components/post'
 import { Title } from '@/components/title'
 import { useEffect, useState } from 'react'
@@ -16,6 +17,7 @@ export function PostInfo () {
   const { id } = useParams<{ id: string }>()
   const [post, setPost] = useState<PostType | null>(null)
   const [comments, setComments] = useState<CommentType[]>([])
+  const [isCommentsLoading, setIsCommentsLoading] = useState(true)
 
   const commentsCount = comments.length
 
@@ -35,6 +37,8 @@ export function PostInfo () {
 
   useEffect(() => {
     async function loadComments () {
+      setIsCommentsLoading(true)
+
       try {
         if (!post) return
 
@@ -47,6 +51,8 @@ export function PostInfo () {
         setComments(data)
       } catch (error) {
         console.error(error)
+      } finally {
+        setIsCommentsLoading(false)
       }
     }
 
@@ -55,6 +61,8 @@ export function PostInfo () {
 
   return (
     <div>
+      <Loader isLoading={isCommentsLoading} />
+
       {post && (
         <Post
           id={post.id}
@@ -70,7 +78,9 @@ export function PostInfo () {
       <section>
         <S.Header>
           <Title as='h2'>Comentários</Title>
-          <ListCount>{commentsCount} comentários</ListCount>
+          {!isCommentsLoading && (
+            <ListCount>{commentsCount} comentários</ListCount>
+          )}
         </S.Header>
 
         <S.ListContainer>
