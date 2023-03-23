@@ -1,6 +1,7 @@
 import { ReactComponent as Message } from '@/assets/icons/messages.svg'
 import { ReactComponent as Avatar } from '@/assets/icons/avatar.svg'
 import * as S from './styles'
+import { Link } from 'react-router-dom'
 
 export type PostType = {
   id: number
@@ -36,9 +37,9 @@ export function Post ({
         </button>
 
         {!isComment && (
-          <a href='#' className='comments'>
+          <Link to={`post/${id}`} className='comments'>
             <Message aria-label="comments" title="comments" />
-          </a>
+          </Link>
         )}
       </S.Footer>
     </S.Container>
