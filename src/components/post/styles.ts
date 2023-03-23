@@ -15,8 +15,7 @@ export const Container = styled.article<ContainerProps>`
     border: 2px solid ${theme.colors.primary};
   `}
 
-  > h2 {
-    margin: 0;
+  > strong {
     font-size: 2.4rem;
   }
 `

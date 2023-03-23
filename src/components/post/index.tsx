@@ -26,7 +26,7 @@ export function Post ({
 }: PostProps) {
   return (
     <S.Container key={id} isHighlighted={isHighlighted}>
-      <h2>{title}</h2>
+      <strong>{title}</strong>
       <p>{body}</p>
 
       <S.Footer>
