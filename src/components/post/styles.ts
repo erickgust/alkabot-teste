@@ -15,9 +15,16 @@ export const Container = styled.article`
 export const Footer = styled.footer`
   display: flex;
 
-  button {
+  .user-info {
     all: unset;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    color: ${({ theme }) => theme.colors.icon};
+    font-size: 1.4rem;
   }
 
   > .comments {
