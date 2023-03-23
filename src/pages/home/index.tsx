@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 import * as S from './styles'
 import { Loader } from '@/components/loader'
+import { Title } from '@/components/title'
 
 export function Home () {
   const [posts, setPosts] = useState<PostType[]>([])
@@ -29,7 +30,7 @@ export function Home () {
 
   return (
     <div>
-      <h1>Posts</h1>
+      <Title>Página Inicial</Title>
       <Loader isLoading={isLoading} />
 
       <S.ListContainer>

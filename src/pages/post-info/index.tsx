@@ -1,4 +1,5 @@
 import { Post, PostType } from '@/components/post'
+import { Title } from '@/components/title'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as S from './styles'
@@ -61,8 +62,10 @@ export function PostInfo () {
         />
       )}
 
+      <S.Divider />
+
       <section>
-        <h2>Comments</h2>
+        <Title as='h2'>Comments</Title>
 
         <S.ListContainer>
           {comments.map((comment) => (
