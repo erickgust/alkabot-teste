@@ -4,6 +4,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  margin-bottom: 1.6rem;
 `
 
 export const ListContainer = styled.section`

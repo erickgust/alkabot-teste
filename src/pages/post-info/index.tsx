@@ -1,3 +1,4 @@
+import { ListCount } from '@/components/list-count'
 import { Post, PostType } from '@/components/post'
 import { Title } from '@/components/title'
 import { useEffect, useState } from 'react'
@@ -15,6 +16,8 @@ export function PostInfo () {
   const { id } = useParams<{ id: string }>()
   const [post, setPost] = useState<PostType | null>(null)
   const [comments, setComments] = useState<CommentType[]>([])
+
+  const commentsCount = comments.length
 
   useEffect(() => {
     async function getPost () {
@@ -65,7 +68,10 @@ export function PostInfo () {
       <S.Divider />
 
       <section>
-        <Title as='h2'>Comments</Title>
+        <S.Header>
+          <Title as='h2'>Comentários</Title>
+          <ListCount>{commentsCount} comentários</ListCount>
+        </S.Header>
 
         <S.ListContainer>
           {comments.map((comment) => (
