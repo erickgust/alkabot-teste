@@ -1,13 +1,16 @@
 import { Post, PostType } from '@/components/post'
 import { useEffect, useState } from 'react'
-
 import * as S from './styles'
+
 import { Loader } from '@/components/loader'
 import { Title } from '@/components/title'
+import { ListCount } from '@/components/list-count'
 
 export function Home () {
   const [posts, setPosts] = useState<PostType[]>([])
   const [isLoading, setIsLoading] = useState(true)
+
+  const postsCount = posts.length
 
   useEffect(() => {
     async function loadPosts () {
@@ -32,7 +35,10 @@ export function Home () {
     <div>
       <S.Header>
         <Title>Página Inicial</Title>
-        <S.ListCount>4 postagens</S.ListCount>
+
+        {!isLoading && (
+          <ListCount>{postsCount} postagens</ListCount>
+        )}
       </S.Header>
 
       <Loader isLoading={isLoading} />
