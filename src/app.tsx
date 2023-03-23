@@ -1,14 +1,24 @@
+import styled from 'styled-components'
 import { Route, Switch } from 'react-router-dom'
 
 import { Home } from './pages/home'
 import { PostInfo } from './pages/post-info'
 
+export const Main = styled.main`
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+`
+
 function App () {
   return (
-    <Switch>
-      <Route path='/' exact component={Home} />
-      <Route path='/post/:id' component={PostInfo} />
-    </Switch>
+    <Main>
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/post/:id' component={PostInfo} />
+      </Switch>
+    </Main>
   )
 }
 

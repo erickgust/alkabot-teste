@@ -28,7 +28,7 @@ export function Home () {
   }, [])
 
   return (
-    <S.Container>
+    <div>
       <h1>Posts</h1>
       <Loader isLoading={isLoading} />
 
@@ -42,6 +42,6 @@ export function Home () {
           />
         ))}
       </S.ListContainer>
-    </S.Container>
+    </div>
   )
 }
