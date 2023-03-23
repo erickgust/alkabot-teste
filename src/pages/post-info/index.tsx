@@ -1,6 +1,7 @@
 import { Post, PostType } from '@/components/post'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import * as S from './styles'
 
 type CommentType = {
   id: number
@@ -63,17 +64,18 @@ export function PostInfo () {
       <section>
         <h2>Comments</h2>
 
-        {comments.map((comment) => (
-          <Post
-            key={comment.id}
-            id={comment.id}
-            title={comment.name}
-            body={comment.body}
-            email={comment.email}
-            isComment
-          />
-        ))}
-
+        <S.ListContainer>
+          {comments.map((comment) => (
+            <Post
+              key={comment.id}
+              id={comment.id}
+              title={comment.name}
+              body={comment.body}
+              email={comment.email}
+              isComment
+            />
+          ))}
+        </S.ListContainer>
       </section>
     </div>
   )
