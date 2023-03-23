@@ -30,7 +30,11 @@ export function Home () {
 
   return (
     <div>
-      <Title>Página Inicial</Title>
+      <S.Header>
+        <Title>Página Inicial</Title>
+        <S.ListCount>4 postagens</S.ListCount>
+      </S.Header>
+
       <Loader isLoading={isLoading} />
 
       <S.ListContainer>
