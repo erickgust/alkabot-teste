@@ -5,7 +5,7 @@ type ContainerProps = {
 }
 
 export const Container = styled.article<ContainerProps>`
-  background-color: ${({ theme }) => theme.colors.posts.background};
+  background-color: ${({ theme }) => theme.colors.white.details};
   padding: 2.4rem;
   border-radius: 0.8rem;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
@@ -31,7 +31,7 @@ export const Footer = styled.footer`
     align-items: center;
     gap: 0.8rem;
 
-    color: ${({ theme }) => theme.colors.icon};
+    color: ${({ theme }) => theme.colors.gray.dark};
     font-size: 1.4rem;
   }
 

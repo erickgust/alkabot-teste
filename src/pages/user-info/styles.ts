@@ -6,7 +6,7 @@ export const Container = styled.div`
   border-radius: 0.8rem;
   background-color: #ffffff;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.black};
 `
 
 export const Section = styled.section`
@@ -33,7 +33,7 @@ export const ListContainer = styled.ul`
   margin: 0;
 
   li {
-    color: ${({ theme }) => theme.colors.icon};
+    color: ${({ theme }) => theme.colors.gray.dark};
   }
 
   li + li {
@@ -41,7 +41,7 @@ export const ListContainer = styled.ul`
   }
 
   span {
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.black};
     margin-left: 0.8rem;
   }
 `
@@ -64,11 +64,11 @@ export const UserList = styled.div`
 
     gap: 0.8rem;
     padding: 1.6rem;
-    color: ${({ theme }) => theme.colors.icon};
+    color: ${({ theme }) => theme.colors.gray.dark};
 
     strong {
       display: block;
-      color: ${({ theme }) => theme.colors.text};
+      color: ${({ theme }) => theme.colors.black};
     }
 
     span {
