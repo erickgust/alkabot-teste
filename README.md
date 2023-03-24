@@ -10,12 +10,6 @@
 
 ### ✨ [Demo](https://alkabot-teste.netlify.app/)
 
-## Install
-
-```sh
-yarn
-```
-
 ## Usage
 
 Clone this project:
@@ -27,13 +21,13 @@ git clone https://github.com/erickgust/alkabot-teste.git
 Install the dependencies:
 
 ```sh
-yarn
+yarn # or npm install
 ```
 
 Run dev server:
 
 ```sh
-yarn dev
+yarn dev # or npm run dev
 ```
 
 ## Production version
@@ -41,7 +35,7 @@ yarn dev
 To generate the production version, you can run:
 
 ```sh
-yarn build
+yarn build # or npm run build
 ```
 
 All files you have to deploy will be located at the `dist` directory.
@@ -51,7 +45,7 @@ All files you have to deploy will be located at the `dist` directory.
 To check if everything will be ok in production before the deployment, you can run this command after `yarn build`:
 
 ```sh
-yarn preview
+yarn preview # or npm run preview
 ```
 
 ## Author
