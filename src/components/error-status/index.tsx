@@ -12,7 +12,7 @@ export function ErrorStatus ({ onTryAgain }: ErrorStatusProps) {
       <img src={sad} alt='Rosto triste' />
 
       <div>
-        <strong>Ocorreu um erro ao obter os posts!</strong>
+        <strong>Ocorreu um erro ao obter resultados!</strong>
 
         <S.Button danger onClick={onTryAgain}>Tentar novamente</S.Button>
       </div>

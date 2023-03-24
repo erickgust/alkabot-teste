@@ -32,6 +32,7 @@ export const Button = styled.button<ButtonProps>`${({ theme, danger }) => css`
 export const ErrorContainer = styled.div`
   display: flex;
   align-items: center;
+  margin: 1.6rem 0;
 
   div {
     margin-left: 2.4rem;

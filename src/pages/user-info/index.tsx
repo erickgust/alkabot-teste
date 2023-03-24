@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import { ReactComponent as UserIcon } from '@/assets/icons/user.svg'
 import * as S from './styles'
 import { Title } from '@/components/title'
 import { Loader } from '@/components/loader'
 import { toast } from '@/utils/toast'
+import { ErrorStatus } from '@/components/error-status'
 
 type UserType = {
   id: number
@@ -27,6 +28,27 @@ export function UserInfo () {
   const [user, setUser] = useState<UserType | null>(null)
   const [recommendedUsers, setRecommendedUsers] = useState<UserType[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [hasError, setHasError] = useState(false)
+
+  const loadRecommendedUsers = useCallback(async () => {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users')
+      const data = await response.json()
+
+      const filteredData = data.filter((user: UserType) => (
+        user.id !== Number(id)),
+      )
+
+      setRecommendedUsers(filteredData)
+      setHasError(false)
+    } catch (error) {
+      setHasError(true)
+    }
+  }, [id])
+
+  function handleTryAgain () {
+    loadRecommendedUsers()
+  }
 
   useEffect(() => {
     let isMounted = true
@@ -64,23 +86,8 @@ export function UserInfo () {
   }, [id, history])
 
   useEffect(() => {
-    async function loadRecommendedUsers () {
-      try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users')
-        const data = await response.json()
-
-        const filteredData = data.filter((user: UserType) => (
-          user.id !== Number(id)),
-        )
-
-        setRecommendedUsers(filteredData)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
     loadRecommendedUsers()
-  }, [id])
+  }, [loadRecommendedUsers])
 
   return (
     <div>
@@ -122,21 +129,25 @@ export function UserInfo () {
       <S.Footer>
         <Title>Recomendados</Title>
 
-        <S.UserList>
-          {recommendedUsers.map(user => (
-            <S.Container
-              key={user.id}
-              as={Link}
-              to={`/user/${user.id}`}
-              className="user-info"
-            >
-                <UserIcon aria-label="user" title="user" />
-                <strong>{user?.name}</strong>
-                <span>{user?.email}</span>
-                <span>{user?.website}</span>
-            </S.Container>
-          ))}
-        </S.UserList>
+        {hasError && <ErrorStatus onTryAgain={handleTryAgain} />}
+
+        {!hasError && (
+          <S.UserList>
+            {recommendedUsers.map(user => (
+              <S.Container
+                key={user.id}
+                as={Link}
+                to={`/user/${user.id}`}
+                className="user-info"
+              >
+                  <UserIcon aria-label="user" title="user" />
+                  <strong>{user?.name}</strong>
+                  <span>{user?.email}</span>
+                  <span>{user?.website}</span>
+              </S.Container>
+            ))}
+          </S.UserList>
+        )}
       </S.Footer>
     </div>
   )
