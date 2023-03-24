@@ -4,17 +4,20 @@ import { Route, Switch } from 'react-router-dom'
 import { Home } from './pages/home'
 import { PostInfo } from './pages/post-info'
 import { UserInfo } from './pages/user-info'
+import { Header } from './components/header'
 
 export const Main = styled.main`
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 2.5rem 1rem;
+  padding: 2.4rem 1rem;
+  padding-top: 0;
 `
 
 function App () {
   return (
     <Main>
+      <Header />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/post/:id' component={PostInfo} />
