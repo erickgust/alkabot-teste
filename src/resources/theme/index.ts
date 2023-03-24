@@ -6,6 +6,8 @@ export const theme: DefaultTheme = {
     text: '#29292E',
     primary: '#835AFD',
     icon: '#737380',
+    danger: '#E73F5D',
+    success: '#51CA73',
 
     posts: {
       background: '#FEFEFE',

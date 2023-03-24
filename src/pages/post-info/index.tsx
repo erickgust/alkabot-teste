@@ -2,6 +2,7 @@ import { ListCount } from '@/components/list-count'
 import { Loader } from '@/components/loader'
 import { Post, PostType } from '@/components/post'
 import { Title } from '@/components/title'
+import { toast } from '@/utils/toast'
 import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import * as S from './styles'
@@ -34,6 +35,11 @@ export function PostInfo () {
         const data = await response.json()
         setPost(data)
       } catch (error) {
+        toast({
+          message: 'Post não encontrado',
+          type: 'error',
+        })
+
         history.push('/')
       }
     }
