@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from 'react-router-dom'
 import { ReactComponent as UserIcon } from '@/assets/icons/user.svg'
 import * as S from './styles'
 import { Title } from '@/components/title'
+import { Loader } from '@/components/loader'
 
 type UserType = {
   id: number
@@ -24,9 +25,12 @@ export function UserInfo () {
   const { id } = useParams<{ id: string }>()
   const [user, setUser] = useState<UserType | null>(null)
   const [recommendedUsers, setRecommendedUsers] = useState<UserType[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function loadUser () {
+      setIsLoading(true)
+
       try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
 
@@ -37,6 +41,7 @@ export function UserInfo () {
         const data = await response.json()
 
         setUser(data)
+        setIsLoading(false)
       } catch (error) {
         history.push('/')
       }
@@ -66,6 +71,8 @@ export function UserInfo () {
 
   return (
     <div>
+      <Loader isLoading={isLoading} />
+
       {user && (
         <S.Container>
           <header>
