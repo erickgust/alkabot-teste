@@ -23,6 +23,7 @@ export function Home () {
       const data = await response.json()
 
       setPosts(data)
+      setHasError(false)
     } catch (error) {
       setHasError(true)
     } finally {
