@@ -55,11 +55,12 @@ export const UserList = styled.div`
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 
-  div {
+  .user-info {
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 
     gap: 0.8rem;
     padding: 1.6rem;
@@ -68,6 +69,17 @@ export const UserList = styled.div`
     strong {
       display: block;
       color: ${({ theme }) => theme.colors.text};
+    }
+
+    span {
+      display: block;
+      font-size: 1.4rem;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      max-width: 100%;
     }
   }
 `

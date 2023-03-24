@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { ReactComponent as UserIcon } from '@/assets/icons/user.svg'
 import * as S from './styles'
 import { Title } from '@/components/title'
@@ -22,6 +22,7 @@ type UserType = {
 export function UserInfo () {
   const { id } = useParams<{ id: string }>()
   const [user, setUser] = useState<UserType | null>(null)
+  const [recommendedUsers, setRecommendedUsers] = useState<UserType[]>([])
 
   useEffect(() => {
     async function loadUser () {
@@ -36,6 +37,25 @@ export function UserInfo () {
     }
 
     loadUser()
+  }, [id])
+
+  useEffect(() => {
+    async function loadRecommendedUsers () {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users')
+        const data = await response.json()
+
+        const filteredData = data.filter((user: UserType) => (
+          user.id !== Number(id)),
+        )
+
+        setRecommendedUsers(filteredData)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    loadRecommendedUsers()
   }, [id])
 
   return (
@@ -76,13 +96,20 @@ export function UserInfo () {
       <S.Footer>
         <Title>Recomendados</Title>
 
-        <S.UserList className='users-list'>
-          <S.Container>
-            <UserIcon aria-label="user" title="user" />
-            <strong>{user?.name}</strong>
-            <span>{user?.email}</span>
-            <span>{user?.website}</span>
-          </S.Container>
+        <S.UserList>
+          {recommendedUsers.map(user => (
+            <S.Container
+              key={user.id}
+              as={Link}
+              to={`/user/${user.id}`}
+              className="user-info"
+            >
+                <UserIcon aria-label="user" title="user" />
+                <strong>{user?.name}</strong>
+                <span>{user?.email}</span>
+                <span>{user?.website}</span>
+            </S.Container>
+          ))}
         </S.UserList>
       </S.Footer>
     </div>
