@@ -31,14 +31,14 @@ export function Post ({
       <p>{body}</p>
 
       <S.Footer>
-        <Link to={`user/${userId}`} className='user-info'>
+        <Link to={`/user/${userId}`} className='user-info'>
           <Avatar aria-label="profile" title="profile" />
           {!!email && <span>{email}</span>}
           {!email && <span>Ver perfil</span>}
         </Link>
 
         {!isComment && (
-          <Link to={`post/${id}`} className='comments'>
+          <Link to={`/post/${id}`} className='comments'>
             <Message aria-label="comments" title="comments" />
           </Link>
         )}
