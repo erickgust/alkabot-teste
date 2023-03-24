@@ -4,7 +4,7 @@
 set -e
 
 # build
-yarn build --base=/alkabot-teste/
+yarn build
 
 # navigate into the build output directory
 cd dist
