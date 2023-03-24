@@ -24,6 +24,8 @@ export function PostInfo () {
   const commentsCount = comments.length
 
   useEffect(() => {
+    let isMounted = true
+
     async function getPost () {
       try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
@@ -35,6 +37,8 @@ export function PostInfo () {
         const data = await response.json()
         setPost(data)
       } catch (error) {
+        if (!isMounted) return
+
         toast({
           message: 'Post não encontrado',
           type: 'error',
@@ -45,6 +49,10 @@ export function PostInfo () {
     }
 
     getPost()
+
+    return () => {
+      isMounted = false
+    }
   }, [id, history])
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import { ReactComponent as UserIcon } from '@/assets/icons/user.svg'
 import * as S from './styles'
 import { Title } from '@/components/title'
 import { Loader } from '@/components/loader'
+import { toast } from '@/utils/toast'
 
 type UserType = {
   id: number
@@ -28,6 +29,8 @@ export function UserInfo () {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    let isMounted = true
+
     async function loadUser () {
       setIsLoading(true)
 
@@ -43,11 +46,21 @@ export function UserInfo () {
         setUser(data)
         setIsLoading(false)
       } catch (error) {
+        if (!isMounted) return
+
+        toast({
+          message: 'Usuário não encontrado',
+          type: 'error',
+        })
         history.push('/')
       }
     }
 
     loadUser()
+
+    return () => {
+      isMounted = false
+    }
   }, [id, history])
 
   useEffect(() => {
