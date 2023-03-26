@@ -5,6 +5,7 @@ import { Home } from './pages/home'
 import { PostInfo } from './pages/post-info'
 import { UserInfo } from './pages/user-info'
 import { Header } from './components/header'
+import { NotFound } from './pages/not-found'
 
 export const Main = styled.main`
   width: 100%;
@@ -22,6 +23,7 @@ function App () {
         <Route path='/' exact component={Home} />
         <Route path='/post/:id' component={PostInfo} />
         <Route path='/user/:id' component={UserInfo} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </Main>
   )
