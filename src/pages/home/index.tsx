@@ -6,6 +6,7 @@ import { Title } from '@/components/title'
 import { ListCount } from '@/components/list-count'
 import { ErrorStatus } from '@/components/error-status'
 import { useHome } from './use-home'
+import { Pagination } from '@/components/pagination'
 
 export function Home () {
   const {
@@ -14,7 +15,10 @@ export function Home () {
     hasPosts,
     postsCount,
     posts,
+    activePage,
+    totalPage,
     handleTryAgain,
+    handlePageChange,
   } = useHome()
 
   return (
@@ -43,6 +47,14 @@ export function Home () {
             />
           ))}
         </S.ListContainer>
+      )}
+
+      {!hasError && !isLoading && (
+        <Pagination
+          activePage={activePage}
+          total={totalPage}
+          onClick={handlePageChange}
+        />
       )}
     </div>
   )
