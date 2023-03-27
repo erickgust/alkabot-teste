@@ -9,6 +9,8 @@ export const theme: DefaultTheme = {
 
     gray: {
       dark: '#737380',
+      medium: '#A8A8B3',
+      light: '#DBDCDD',
     },
 
     white: {
