@@ -84,6 +84,13 @@ export function useUserInfo () {
     loadRecommendedUsers()
   }, [loadRecommendedUsers])
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }, [user])
+
   return {
     isLoading,
     user,
